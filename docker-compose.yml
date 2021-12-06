@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+  redis:
+    image: redis:latest
+  db:
+    build: ./pattern-backend/pattern-db
+    cap_add:
+      - SYS_NICE  # CAP_SYS_NICE
+  backend:
+    build: ./pattern-backend/laravel
+    ports:
+      - 8000:80
+    depends_on:
+      - db
+      - redis
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: sctr
+      DB_USERNAME: root
+      DB_PASSWORD: fstr_hrdr_sctr
+      CACHE_DRIVER: redis
+      REDIS_CLIENT: predis
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+  simulator:
+    build: ./pattern-scooter
+    ports:
+      - 5000:5000
+    depends_on:
+      - backend
+    environment:
+      REQUEST_ROOT_URL: http://backend:80/api
+  # TODO uncomment here once customerapp repo package-lock.json has been fixed
+  # customerapp:
+  #   build: ./pattern-customerapp
+  #   ports:
+  #     - 4201:80
+  #   depends_on:
+  #     - backend
+  customerweb:
+    build: ./pattern-customerweb
+    ports:
+      - 4202:80
+    depends_on:
+      - backend
+  adminweb:
+    build: ./pattern-adminweb
+    ports:
+      - 4203:80
+    depends_on:
+      - backend

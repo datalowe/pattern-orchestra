@@ -1,0 +1,15 @@
+[submodule "pattern-backend"]
+	path = pattern-backend
+	url = git@github.com:datalowe/pattern-backend.git
+[submodule "pattern-scooter"]
+	path = pattern-scooter
+	url = git@github.com:jannikarlsson/pattern-scooter.git
+[submodule "pattern-customerapp"]
+	path = pattern-customerapp
+	url = git@github.com:fahlstrm/pattern-customerapp.git
+[submodule "pattern-adminweb"]
+	path = pattern-adminweb
+	url = git@github.com:fahlstrm/pattern-adminweb.git
+[submodule "pattern-customerweb"]
+	path = pattern-customerweb
+	url = git@github.com:fahlstrm/pattern-customerweb.git
