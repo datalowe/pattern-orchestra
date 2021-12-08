@@ -15,6 +15,8 @@ Apart from docker setup-related files, it includes code from all other project-r
 Note that, in order to include the submodule's code, when cloning the repository you need to run `git clone --recurse-submodules git@github.com:datalowe/pattern-backend.git`. If you accidentally ran a 'normal' `git clone` without the recursion flag, running `git submodule update --init --recursive` should help. In order to get the very latest version/commit of every submodule, you can run `git submodule foreach 'git pull'`. Note however that this might take you 'out of sync' with this repository, as it has each submodule 'pinned' at a certain commit.
 
 ## Build and run with Docker
+Be aware that this project requires __a lot__ of space, about 5GB. This is mainly because the frontend applications, which use Angular and associated npm packages, run their builds inside their respctive containers. This is to avoid accidentally using old code and requiring any manual build steps on the host computer (or, alternatively and equally problematic, uploading the post-build distributions to the GitHub repos).
+
 ```bash
 cd /path/to/this/dir
 
