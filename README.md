@@ -37,7 +37,7 @@ docker-compose down --rmi all
 
 Once everything has started up (again, especially the database), you can reach the different parts of the project as follows:
 * `localhost:8000`: direct access to backend (e. g. `localhost:8000/api/scooters`)
-* `localhost:4201`: customer app (for hiring scooters) TODO: deactivated at the moment, see docker-compose.yml
+* `localhost:4201`: customer app (for hiring scooters)
 * `localhost:4202`: customer 'web' interface (for tasks like reviewing previous trips)
 * `localhost:4203`: administrator web interface
 * `localhost:5000`: only make _a single request_ to this endpoint in order to trigger scooter simulation (after a short delay, you should be able to see changes happening in admin/customer interface maps)

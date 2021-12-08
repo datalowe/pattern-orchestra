@@ -33,13 +33,12 @@ services:
       - backend
     environment:
       REQUEST_ROOT_URL: http://backend:80/api
-  # TODO uncomment here once customerapp repo package-lock.json has been fixed
-  # customerapp:
-  #   build: ./pattern-customerapp
-  #   ports:
-  #     - 4201:80
-  #   depends_on:
-  #     - backend
+  customerapp:
+    build: ./pattern-customerapp
+    ports:
+      - 4201:80
+    depends_on:
+      - backend
   customerweb:
     build: ./pattern-customerweb
     ports:
