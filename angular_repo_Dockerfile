@@ -1,0 +1,12 @@
+# this Dockerfile is based on
+# https://betterprogramming.pub/how-to-create-an-angular-dockerfile-75c059e7f8e8
+# it's supposed to only be included in pattern-orchestra and is used for building
+# Docker images for Angular submodules/repos where the dist/ directory has already
+# been pre-built, to decrease image sizes and build times.
+FROM nginx:alpine
+
+COPY /dist/*/ /usr/share/nginx/html/
+
+RUN chmod 777 -R /usr/share/nginx/html
+
+EXPOSE 80

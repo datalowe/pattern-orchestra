@@ -1,0 +1,35 @@
+cd pattern-adminweb
+npm install
+ng build
+docker build -t datalowe/pattern-adminweb:latest -f ../angular_repo_Dockerfile .
+docker push datalowe/pattern-adminweb:latest
+cd ..
+
+cd pattern-backend/laravel
+docker build -t datalowe/pattern-laravel:latest .
+docker push datalowe/pattern-laravel:latest
+cd ../..
+
+cd pattern-backend/pattern-db
+docker build -t datalowe/pattern-db:latest .
+docker push datalowe/pattern-db:latest
+cd ../..
+
+cd pattern-customerapp
+npm install
+ng build
+docker build -t datalowe/pattern-customerapp:latest -f ../angular_repo_Dockerfile .
+docker push datalowe/pattern-customerapp:latest
+cd ..
+
+cd pattern-customerweb
+npm install
+ng build
+docker build -t datalowe/pattern-customerweb:latest -f ../angular_repo_Dockerfile .
+docker push datalowe/pattern-customerweb:latest
+cd ..
+
+cd pattern-scooter
+docker build -t datalowe/pattern-scooter:latest .
+docker push datalowe/pattern-scooter:latest
+cd ..

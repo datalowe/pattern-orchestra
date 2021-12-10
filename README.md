@@ -15,7 +15,18 @@ Apart from docker setup-related files, it includes code from all other project-r
 Note that, in order to include the submodule's code, when cloning the repository you need to run `git clone --recurse-submodules git@github.com:datalowe/pattern-backend.git`. If you accidentally ran a 'normal' `git clone` without the recursion flag, running `git submodule update --init --recursive` should help. In order to get the very latest version/commit of every submodule, you can run `git submodule foreach 'git pull'`. Note however that this might take you 'out of sync' with this repository, as it has each submodule 'pinned' at a certain commit.
 
 ## Build and run with Docker
-Be aware that this project requires __a lot__ of space, about 5GB. This is mainly because the frontend applications, which use Angular and associated npm packages, run their builds inside their respctive containers. This is to avoid accidentally using old code and requiring any manual build steps on the host computer (or, alternatively and equally problematic, uploading the post-build distributions to the GitHub repos).
+### Pulling images from Docker Hub
+If you just want to use pre-built images that you pull from Docker Hub, run `docker compose -f docker-compose.yml up`. This is the most time- and space-efficient method to get everything running, but you might end up using an older version of the project if not everything has been updated (see below).
+
+To tidy up and remove all pulled images as well, run
+```bash
+docker-compose down --rmi all
+```
+
+(the Docker Hub images are updated with the 'update_repo_images.txt' commands)
+
+### Building from submodules
+Be aware that building images from submodules and running directly requires __a lot__ of space, about 5GB. This is mainly because the frontend applications, which use Angular and associated npm packages, with this method run their builds inside their respctive containers. This ensures that you avoid accidentally using old code and that you don't need to do any manual build steps on the host computer to get the latest version of everything.
 
 ```bash
 cd /path/to/this/dir
@@ -23,6 +34,7 @@ cd /path/to/this/dir
 # depending on your host OS, you might need/prefer to use `docker compose up` instead.
 # note the '--build' flag which ensures that images are always built, rather than
 # containers being run based on pre-existing, possibly outdated, images.
+docker compose -f docker-compose.localbuild.yml up
 docker-compose up --build
 ```
 Note that this command runs in 'attached' mode, meaning the terminal will show output logs from both the database and the Laravel/backend containers. This is useful to keep track of when all containers (especially the database) have finished loading and you should be able to start using the system. If you want to run in detached mode instead, use `docker-compose -d up --build`.

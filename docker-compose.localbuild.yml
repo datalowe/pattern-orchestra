@@ -4,11 +4,11 @@ services:
   redis:
     image: redis:latest
   db:
-    image: datalowe/pattern-db:latest
+    build: ./pattern-backend/pattern-db
     cap_add:
       - SYS_NICE  # CAP_SYS_NICE
   backend:
-    image: datalowe/pattern-laravel:latest
+    build: ./pattern-backend/laravel
     ports:
       - 8000:80
     depends_on:
@@ -26,7 +26,7 @@ services:
       REDIS_HOST: redis
       REDIS_PORT: 6379
   simulator:
-    image: datalowe/pattern-scooter:latest
+    build: ./pattern-scooter
     ports:
       - 5000:5000
     depends_on:
@@ -34,19 +34,19 @@ services:
     environment:
       REQUEST_ROOT_URL: http://backend:80/api
   customerapp:
-    image: datalowe/pattern-customerapp:latest
+    build: ./pattern-customerapp
     ports:
       - 4201:80
     depends_on:
       - backend
   customerweb:
-    image: datalowe/pattern-customerweb:latest
+    build: ./pattern-customerweb
     ports:
       - 4202:80
     depends_on:
       - backend
   adminweb:
-    image: datalowe/pattern-adminweb:latest
+    build: ./pattern-adminweb
     ports:
       - 4203:80
     depends_on:
