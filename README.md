@@ -1,8 +1,28 @@
 # SCTR Orchestra
+This repository is part of a group project done for the ['pattern' course](https://www.bth.se/utbildning/program-och-kurser/kurser/20232/BR4QJ/) at Blekinge Institute of Technology, where we simulated a scooter hiring service. The resulting system included a database (MySQL), a backend (PHP/Laravel, using Redis) offering a RESTful API, a customer mobile-friendly app (JS/Angular), a customer desktop-friendly interface for e.g. updating payment information (JS/Angular), an administrator interface (JS/Angular), and a scooter simulator (Python, using multi-threading). All pieces of the project were containerized with Docker.
 
-This repository is part of a group project done for the ['pattern' course](https://www.bth.se/utbildning/program-och-kurser/kurser/20232/BR4QJ/) at Blekinge Institute of Technology.
+> "You've given me everything I could've asked for and more."
+> 
+> \- Course teacher after our final project presentation (translated from Swedish)
 
-Apart from docker setup-related files, it includes code from all other project-related repositories as [Git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules). For more information on each of these, see their respective repositories:
+__Customer 'mobile app' interface__
+
+<img width="400px" alt="An example screenshot of the customer app." src="./example_images/customerapp_ex.png">
+
+__Customer 'desktop account management' interface__
+
+<img width="600px" alt="An example screenshot of the customer account management interface." src="./example_images/customerweb_ex.png">
+
+__Administrator interface (view for checking status of scooters)__
+
+<img width="600px" alt="An example screenshot of the administrator interface." src="./example_images/admin_ex.png">
+
+If you want, you can try out the frontend parts of the project at the following addresses:
+* https://datalowe.com/sctr/customerapp
+* https://datalowe.com/sctr/customerweb
+* (only login screen, since you need administrator rights here) https://datalowe.com/sctr/adminweb
+
+Apart from docker setup-related files, this repository includes code from all other project-related repositories as [Git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules). For more information on each of these, see their respective repositories:
 
 * [pattern-db](https://github.com/joki20/pattern-db)
     + note that this submodule is nested within the pattern-backend submodule
