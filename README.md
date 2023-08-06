@@ -17,11 +17,6 @@ __Administrator interface (view for checking status of scooters)__
 
 <img width="600px" alt="An example screenshot of the administrator interface." src="./example_images/admin_ex.png">
 
-If you want, you can try out the frontend parts of the project at the following addresses:
-* https://datalowe.com/sctr/customerapp
-* https://datalowe.com/sctr/customerweb
-* (only login screen, since you need administrator rights here) https://datalowe.com/sctr/adminweb
-
 Apart from docker setup-related files, this repository includes code from all other project-related repositories as [Git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules). For more information on each of these, see their respective repositories:
 
 * [pattern-db](https://github.com/joki20/pattern-db)
